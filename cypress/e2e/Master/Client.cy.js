@@ -9,7 +9,7 @@ describe('Login to Jobiz', () => {
     cy.wait(1000);
   });
 
-  it('should log in and navigate to feature page', () => {
+  it('should create a client', () => {
     // Step 1: Visit login page
     // cy.visit('http://localhost:4200/')
 
@@ -83,9 +83,6 @@ describe('Login to Jobiz', () => {
 
   //Save the Client
   // cy.get('.btn-new > .p-ripple').click();
-
-        
-
 
   });
 

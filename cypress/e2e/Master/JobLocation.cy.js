@@ -4,7 +4,7 @@ describe('Home Page Tests', () => {
     cy.visit('/home');
     cy.wait(1000);
   });
-  it('should display dashboard widgets', () => {
+  it('should Create a JobLocation', () => {
     cy.get('#pn_id_1_tab_1 > .pi').click();
     cy.wait(2000);
     cy.get('[routerlink="/master/joblocation"]').click();

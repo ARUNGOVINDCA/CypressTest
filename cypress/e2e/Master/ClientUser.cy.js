@@ -1,5 +1,5 @@
 describe('Home Page Tests', () => {
-    it('should log in and navigate to feature page', () => {
+    it('should create a ClientUser', () => {
         // Step 1: Visit login page
         cy.visit('http://localhost:4200/');
 
