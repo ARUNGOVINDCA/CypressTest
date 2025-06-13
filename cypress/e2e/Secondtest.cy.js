@@ -1,11 +1,15 @@
-describe('Tests After Login Using cy.session()', () => {
-
+describe('Home Page Tests', () => {
   beforeEach(() => {
-    cy.loginWithSession();     // Reuse saved login session
-    cy.visit('/home');         // Start from home page every test
+    cy.login();         // 👈 Login using custom command
+    cy.visit('/home');  // Ensure you’re starting from home page
   });
 
-  it('Test 1: Home page content', () => {
-    
+  it('shows the dashboard', () => {
+    cy.contains('Welcome').should('be.visible');
+  });
+
+  it('navigates to settings', () => {
+    cy.get('a[href="/settings"]').click();
+    cy.url().should('include', '/settings');
   });
 });

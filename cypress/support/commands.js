@@ -26,12 +26,22 @@
 // Cypress.Commands.add('login',(username,password) =>{
     
 // })
-Cypress.Commands.add('loginWithSession', () => {
-  cy.session('user-login', () => {
-    cy.visit('http://localhost:4200/');
-    cy.get('#email').type('artest@test.com');
-    cy.get('#password').type('zaqs#124');
-   cy.get('.p-button-label').click();
-    cy.contains('home'); // ensure login succeeded
+Cypress.Commands.add('login', (user) => {
+  cy.fixture('credentials').then((creds) => {
+    const { username, password } = creds[user];
+    if (!username || !password) throw new Error(`Credentials missing for ${user}`);
+
+    cy.session([username, password], () => {
+      // ✅ Use correct visit
+      cy.visit('http://localhost:4200/login'); 
+
+      cy.get('#email').type(username);
+      cy.get('#password').type(password);
+      cy.get('.p-button-label').click(); // adjust this selector as needed
+
+      cy.url().should('include', '/home');
+    });
   });
 });
+
+
