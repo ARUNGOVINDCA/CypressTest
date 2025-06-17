@@ -1,4 +1,4 @@
-describe('Home Page Tests', () => {
+describe('Master Test', () => {
     it('should create a ClientUser', () => {
         // Step 1: Visit login page
         cy.visit('http://localhost:4200/');

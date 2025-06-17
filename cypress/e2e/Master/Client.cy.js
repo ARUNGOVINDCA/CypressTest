@@ -1,5 +1,5 @@
 
-describe('Login to Jobiz', () => {
+describe('Master Test', () => {
 
   // const username = 'testuser';
   // const password = 'password123';

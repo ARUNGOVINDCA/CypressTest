@@ -1,11 +1,11 @@
-describe('Settings Quote Catagories', () => {
+describe('Quote Creation', () => {
     beforeEach(() => {
         cy.login('user1'); // Make sure this user exists in credentials.json
         cy.visit('/home');
         cy.wait(1000);
     });
-    //  Creating create New Catagories
-        it('should New Catagories', () => {
+    //  Creating New Quote
+        it('should New Quote', () => {
             cy.get('#pn_id_1_tab_1 > .pi').click();
             cy.wait(1000);
             cy.get(':nth-child(2) > .space-y-1 > li').click();
@@ -13,4 +13,4 @@ describe('Settings Quote Catagories', () => {
 
 
    });
-});          
+});       
