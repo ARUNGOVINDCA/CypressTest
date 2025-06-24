@@ -12,6 +12,7 @@ describe('Quote Creation', () => {
         cy.wait(2000);
         cy.get('#clientDetails > .p-card > .p-card-body > .p-card-content > :nth-child(1) > :nth-child(1) > .p-floatlabel > #clientgroup > .p-select-label').click();
         cy.get('.p-iconfield > .p-inputtext').type('MSD');
+        cy.wait(1000);  
         cy.get('#clientgroup_0').click();
         cy.get('#Clientuser > .p-select-dropdown').click();
         cy.get('#Clientuser_0').click();
@@ -43,7 +44,7 @@ describe('Quote Creation', () => {
 
         //Adding categorie
         cy.get('#CategoryID > .p-select-dropdown').click();
-        cy.get('#CategoryID_4').click();
+        cy.get('#CategoryID_3').click();
 
         //Edit in Refernce
         cy.get('.grid > .relative > .absolute > .pi').click();
@@ -51,15 +52,61 @@ describe('Quote Creation', () => {
         cy.wait(1000);
         cy.get('#Reference').clear().type('YES/JJA/2025');
         cy.get('#JobTitle').type('This Is MSD Service');
-        cy.get('#Subject').type('A/c Clean Services In MSD Flats And Apratments');  
+        cy.get('#Subject').type('A/c Clean Services In MSD Flats And Apratments');
+        //selecting quote date 
         cy.get('#follow > .p-datepicker > .p-inputtext').click();
         cy.get('[styleclass="p-datepicker-next-button p-button-icon-only"] > .p-ripple').click();
         cy.get(':nth-child(1) > [aria-label="1"]').click();
+        //selecting quote Valid till date
         cy.get('#ValidUntil > .p-datepicker > .p-inputtext').click();
-        cy.get(':nth-child(1) > [aria-label="15"] > .p-ripple').click();
+        cy.wait(1000);
+        cy.get('[aria-label="23"]').click();
+        cy.get('#ApprovalFollowUp > .p-datepicker > .p-inputtext').click();
+        cy.wait(1000);
+        cy.get('#Priority > .p-select-dropdown').click();
+        cy.get('#Priority_1').click();
+        cy.wait(1000);
+        cy.get('#PaymentTerm > .p-select-dropdown').click();
+        cy.get('#PaymentTerm_1').click();
+        cy.wait(1000);
+        cy.get('#Division > .p-select-dropdown').click();
+        cy.get('#Division_17').click();
+        cy.wait(1000);
+        cy.get('#JobLocation > .p-select-label').click();
 
-            
-            
+        // //click on select new jobsite
+        // cy.get('.p-3 > :nth-child(1) > .flex').click();
+        // cy.get('#Name').type('John Wick');
+        // cy.get('#Code').type('LAmo AMrt Building ROAD');
+        // cy.get('#Price').type('MA MALL CITY ABU DHABI');
+        // cy.get('#Unit').type('ABD78995');
+        // cy.get('#zones > .p-select-dropdown').click();
+        // cy.wait(1000);
+        // cy.get('#zones_3').click();
+        // cy.get(':nth-child(7) > .p-floatlabel > #clientgroup > .p-select-dropdown').click();
+        // cy.wait(1000);
+        // cy.get('#clientgroup_4').click();
+        // cy.get('#country > .p-select-dropdown').click();
+        // cy.wait(1000);
+        // cy.get('#country_55').click();
+        // cy.get(':nth-child(9) > .p-floatlabel > #Unit').type('24.572896831466036');
+        // cy.get(':nth-child(10) > .p-floatlabel > #Unit').type('55.15222722263675');
+        // cy.get('#Remark').type('The Jobsite is the best Job sitte in the country');
+        // //Click on the New Button 
+        // // cy.get('app-joblocation-edit.ng-star-inserted > form.ng-dirty > .justify-between > .gap-2 > .btn-new > .p-ripple').click();
+
+        cy.get('#JobLocation_0').click();
+        cy.wait(1000);
+        cy.get('#Item > .p-select-dropdown').click();   
+        cy.get('#Item_15').click();
+        cy.wait(1000)
+        cy.get('div[_ngcontent-ng-c1357793603=""] > .ng-valid > .s-switch > .p-toggleswitch-input').click();
+        //Adding Discount
+        cy.get('.rounded-lg > .w-full > :nth-child(2) > .text-center > .cursor-pointer').click();
+        cy.get('#QCDiscountTypeValue0-0').clear().type('50');
+
+
+
 
 
 
