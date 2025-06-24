@@ -5,7 +5,7 @@ describe('Quote Creation', () => {
         cy.wait(1000);
     });
     //  Creating New Quote
-    it('should New Quote', () => {
+    it('should create a New Quote', () => {
         cy.get('[routerlink="/quotes"]').click();
         cy.wait(1000);
         cy.get('.btn-new > .p-ripple').click();
@@ -49,7 +49,7 @@ describe('Quote Creation', () => {
         //Edit in Refernce
         cy.get('.grid > .relative > .absolute > .pi').click();
         cy.get('#Reference').click();
-        cy.wait(1000);
+        cy.wait(2000);
         cy.get('#Reference').clear().type('YES/JJA/2025');
         cy.get('#JobTitle').type('This Is MSD Service');
         cy.get('#Subject').type('A/c Clean Services In MSD Flats And Apratments');
@@ -59,7 +59,7 @@ describe('Quote Creation', () => {
         cy.get(':nth-child(1) > [aria-label="1"]').click();
         //selecting quote Valid till date
         cy.get('#ValidUntil > .p-datepicker > .p-inputtext').click();
-        cy.wait(1000);
+        cy.wait(2000);
         cy.get('[aria-label="23"]').click();
         cy.get('#ApprovalFollowUp > .p-datepicker > .p-inputtext').click();
         cy.wait(1000);
@@ -99,11 +99,23 @@ describe('Quote Creation', () => {
         cy.wait(1000);
         cy.get('#Item > .p-select-dropdown').click();   
         cy.get('#Item_15').click();
-        cy.wait(1000)
+        cy.wait(2000)
         cy.get('div[_ngcontent-ng-c1357793603=""] > .ng-valid > .s-switch > .p-toggleswitch-input').click();
         //Adding Discount
         cy.get('.rounded-lg > .w-full > :nth-child(2) > .text-center > .cursor-pointer').click();
         cy.get('#QCDiscountTypeValue0-0').clear().type('50');
+        cy.wait(2000);
+        cy.get('.rounded-lg > .w-full > :nth-child(2) > .text-center > .cursor-pointer').click();
+        //Adding new tzx
+        cy.get('.p-0').click();
+        cy.get(':nth-child(5) > .cursor-pointer').click();
+        //Adding a new item
+        cy.get('.d-flex > p-button > .p-ripple').click();
+        cy.get('.flex.ng-untouched > .lg\:w-\[40\%\] > :nth-child(1) > .p-floatlabel > #Item > .p-select-dropdown').click().wait(2000);
+        
+
+        
+
 
 
 
