@@ -42,7 +42,7 @@ describe('Master Test', () => {
     cy.get('#clientname').type('Emirates Corp Office');
     cy.get('#AlternateName').type('E.C.O');
     cy.get('#CustomerCode').type('007');
-    cy.get('[pc131=""] > #clientgroup > .p-select-dropdown').click();    //Drop down
+    cy.get('[pc132=""] > #clientgroup > .p-select-dropdown').click();    //Drop down
     cy.get('#clientgroup_1 > .ng-star-inserted').click();
     cy.wait(2000);
     cy.get('#trn').type('EMPIRE007');
@@ -52,15 +52,15 @@ describe('Master Test', () => {
     cy.get('#fax').type('58877557');
     cy.scrollTo('top', { duration: 1000 }); // Scroll to top with smooth animation
     cy.scrollTo('bottom', { duration: 1000 }); // Scroll to bottom with smooth animation
-    cy.get('.sticky > :nth-child(2)').click();
+    // cy.get('.sticky > :nth-child(2)').click({ multiple: true });
     //Address Details Adding
-    cy.get('.grid > div[_ngcontent-ng-c1955482748=""] > .p-floatlabel > #Street').type('Emirates Building,sahik HanBU ROAD');
+    cy.get('#Street').type('Emirates Building,sahik HanBU ROAD');
     cy.get('#Street2').type('Palance road');
     cy.get('#city').type('Abudhabi');
-    cy.get('[pc149=""] > #Street').type('Dmi77957');
-    cy.get('[pc151=""] > #clientgroup > .p-select-dropdown').click();   //drop down country
+    cy.get('[pc151=""] > #Street').type('Dmi77957');
+    cy.get('[pc153=""] > #clientgroup > .p-select-dropdown').click();   //drop down country
     cy.get('.p-iconfield > .p-inputtext').type('Abu');
-    cy.get('#clientgroup_0 > .ng-star-inserted').click();
+    cy.get('#clientgroup_0').click();
     cy.get('#country > .p-select-dropdown').click();                       //drop down country
     cy.get('.p-iconfield > .p-inputtext').type('United Arab Emirates');
     cy.get('#country_0 > .ng-star-inserted').click();
