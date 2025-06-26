@@ -4,7 +4,7 @@ describe('Master Test', () => {
     cy.visit('/home');
     cy.wait(1000);
   });
-  it('should create a client', () => {
+  it('should create a Quote', () => {
 
     // Navigate to client section
     cy.get('#pn_id_1_tab_1 > .pi').should('be.visible').click();
@@ -101,13 +101,20 @@ describe('Master Test', () => {
 
   // Deatil Page Quote Check Edit
 
-  it('should Edit a Deatil Page Quote', () => {
+  it.only('should Edit a Deatil Page Quote', () => {
     //Wait 2000 for loading page
     cy.wait(2000);
-    cy.get('[routerlink="/quotes"]').click();
-    cy.wait(5000);
-    cy.get(':nth-child(2) > .items-start > .w-5\\/6 > .text-sm').click();
+    cy.get('[routerlink="/quotes"]').should('be.visible').click();
+    cy.get(':nth-child(2) > .items-start > .w-5\\/6 > .text-sm', { timeout: 10000 }).should('be.visible').click();
 
+
+
+    //Adding Follow aup
+    cy.get('#pn_id_87_tab_summary').should('be.visible').click();
+    cy.get('.text-xs').should('be.visible').click();
+    cy.get('.p-datepicker-dropdown').should('be.visible').click();
+    cy.get('[styleclass="p-datepicker-next-button p-button-icon-only"] > .p-ripple').should('be.visible').click();
+    cy.get('[aria-label="23"]').should('be.visible').click();
   });
 
 
