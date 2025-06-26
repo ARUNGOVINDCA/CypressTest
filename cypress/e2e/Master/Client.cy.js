@@ -3,7 +3,7 @@ describe('Master Test', () => {
 
   // const username = 'testuser';
   // const password = 'password123';
-    beforeEach(() => {
+  beforeEach(() => {
     cy.login('user1'); // Make sure this user exists in credentials.json
     cy.visit('/home');
     cy.wait(1000);
@@ -33,7 +33,7 @@ describe('Master Test', () => {
     cy.get('[routerlink="/master/client"]').click();
 
     //click on the New button for creating  new client
-    cy.get('.btn-new > .p-ripple').click();
+    cy.get('.btn-new > .p-ripple', { timeout: 1000 }).click();
     cy.wait(2000);
 
     //adding a client name
@@ -60,17 +60,20 @@ describe('Master Test', () => {
     cy.get('[pc151=""] > #Street').type('Dmi77957');
     cy.get('[pc153=""] > #clientgroup > .p-select-dropdown').click();   //drop down country
     cy.get('.p-iconfield > .p-inputtext').type('Abu');
-    cy.get('#clientgroup_0').click();
+    // cy.wait(2000);
+    cy.get('#clientgroup_0').click({ force: true });
+
+
     cy.get('#country > .p-select-dropdown').click();                       //drop down country
     cy.get('.p-iconfield > .p-inputtext').type('United Arab Emirates');
-    cy.get('#country_0 > .ng-star-inserted').click();
+    cy.get('#country_0').click({ force: true });
     // #clientgroup > p-overlay > div > div > div > div.p-select-list-container
     //Other details Of CLient
-    cy.get('[pc155=""] > #clientgroup > .p-select-dropdown').click();
+    cy.get('[pc158=""] > #clientgroup > .p-select-dropdown').click();
     cy.get('.p-iconfield > .p-inputtext').type('arun');
     cy.wait(2000);
     cy.get('#clientgroup_0').click();
-    cy.get('#Validity').clear().type('15');    
+    cy.get('#Validity').clear().type('15');
     cy.get('#CreditLimits').clear().type('10000');
     cy.get('#Priority > .p-select-dropdown').click();
     cy.get('#Priority_0').click();
@@ -78,13 +81,43 @@ describe('Master Test', () => {
     cy.get('#payment_1').click();
     cy.get('#placeof > .p-select-dropdown').click();
     cy.get('#placeof_1 > .ng-star-inserted').click();
-//Remark
-  cy.get('#remark').should('not.be.disabled').clear().type('Emirates Airline, the flagship carrier of the group, is the largest airline in the Middle East and one of the worlds leading international airlines. Operating a fleet of over 250 wide-bodied aircraft, including the Airbus A380 and Boeing 777, it serves more than 150 destinations across six continents . In the fiscal year ending March 2025, Emirates reported a record profit of $5.2 billion, transporting 53.7 million passengers and generating $34.9 billion in revenue ');
+    //Remark
+    cy.get('#remark').should('not.be.disabled').clear().type('Emirates Airline, the flagship carrier of the group, is the largest airline in the Middle East and one of the worlds leading international airlines. Operating a fleet of over 250 wide-bodied aircraft, including the Airbus A380 and Boeing 777, it serves more than 150 destinations across six continents . In the fiscal year ending March 2025, Emirates reported a record profit of $5.2 billion, transporting 53.7 million passengers and generating $34.9 billion in revenue ');
 
-  //Save the Client
-  // cy.get('.btn-new > .p-ripple').click();
+    //Save the Client
+    // cy.get('.btn-new > .p-ripple').click();
 
   });
+
+  it('should Edit a Client', () => {
+    cy.get('#pn_id_1_tab_1 > .pi').click();
+    cy.wait(1000);
+    cy.get('[routerlink="/master/client"]').click();
+    cy.wait(3000);
+    cy.get(':nth-child(4) > .items-start > .w-1\\/6 > .ml-2').click();
+    cy.wait(1000);
+    cy.get('#title').clear().type('Spl');                                     //Added clear() for repeat Automation the values add lot 
+    cy.get('#phone').clear().type('9877866225');
+    cy.get('.btn-new > .p-ripple').click();
+  });
+
+
+  it('should verify client detail page filters work correctly', () => {
+
+    cy.get('#pn_id_1_tab_1 > .pi', { timeout: 5000 }).should('be.visible').click();
+    cy.get('[routerlink="/master/client"]').should('be.visible').click();
+    cy.get(':nth-child(11) > .items-start > .w-5\\/6 > .text-sm').should('be.visible').click();
+    cy.get('#pn_id_37_tab_JobLocation').should('be.visible').click();
+    cy.get('#input-first-name').should('be.visible').type('Al');
+    cy.get('.absolute').should('be.visible').click();
+    cy.get('.filter-On > .p-ripple').should('be.visible').click();
+    cy.get('.p-button-warn').should('be.visible').click();
+    
+  });
+
+
+
+
 
 });
 
