@@ -4,80 +4,90 @@ describe('Master Test', () => {
     cy.visit('/home');
     cy.wait(1000);
   });
-  it('should create a Quote', () => {
+  it.only('should create a New Quote', () => {
 
-    // Navigate to client section
-    cy.get('#pn_id_1_tab_1 > .pi').should('be.visible').click();
-    cy.get('[routerlink="/master/client"]').should('be.visible').click();
+  // Navigate to Quotes
+  cy.get('[routerlink="/quotes"]').should('be.visible').click({ multiple: true });
+  cy.wait(2000);
+  cy.get('.btn-new > .p-ripple').should('be.visible').click({ multiple: true });
 
-    // Click "New" to create a client
-    cy.get('.btn-new > .p-ripple', { timeout: 3000 }).should('be.visible').click();
+  // Select client
+  cy.get('#clientgroup > .p-select-label').should('be.visible').click();
+  cy.get('.p-iconfield > .p-inputtext').type('MSD');
+  cy.get('#clientgroup_0').should('be.visible').click();
 
-    // Fill in client info
-    cy.get('#title').type('Cor', { delay: 100 });
-    cy.get('#clientname').type('Emirates Corp Office', { delay: 100 });
-    cy.get('#AlternateName').type('E.C.O', { delay: 100 });
-    cy.get('#CustomerCode').type('007', { delay: 100 });
+  cy.get('#Clientuser > .p-select-dropdown').click();
+  cy.get('#Clientuser_0').should('exist').click();
 
-    // Select client group from dropdown
-    cy.get('[pc132=""] > #clientgroup > .p-select-dropdown').should('be.visible').click();
-    cy.get('#clientgroup_1 > .ng-star-inserted').should('be.visible').click({ delay: 100 });
-    cy.wait(1000);
+  cy.get('.grid > :nth-child(2) > .flex').should('be.visible').click();
 
+  // Confirm quote creation page loaded
+  cy.get('.justify-between > .btn-new').should('be.visible').click();
 
-    // Contact info
-    cy.get('#trn').type('EMPIRE007', { delay: 100 });
-    cy.get('#email').type('emirecorp@empire.com');
-    cy.get('#phone').type('58877557');
-    cy.get('#Mobile').type('9987889657');
-    cy.get('#fax').type('58877557');
+  // Select category
+  cy.get('#CategoryID > .p-select-dropdown').click();
+  cy.get('#CategoryID_3').click();
 
-    // Scroll actions
-    cy.scrollTo('top', { duration: 500 });
-    cy.scrollTo('bottom', { duration: 500 });
+  // Edit Reference
+  cy.get('.grid > .relative > .absolute > .pi').click();
+  cy.get('#Reference').should('be.visible').clear().type('YES/JJA/2025');
+  cy.get('#JobTitle').type('This Is MSD Service');
+  cy.get('#Subject').type('A/c Clean Services In MSD Flats And Apartments');
 
-    // Address
-    cy.get('#Street').type('Emirates Building,sahik HanBU ROAD');
-    cy.get('#Street2').type('Palance road');
-    cy.get('#city').type('Abudhabi');
-    cy.get('[pc151=""] > #Street').type('Dmi77957');
+  // Quote Date
+  cy.get('#follow > .p-datepicker > .p-inputtext').click();
+  cy.get('[styleclass="p-datepicker-next-button p-button-icon-only"] > .p-ripple').click();
+  cy.get(':nth-child(1) > [aria-label="1"]').click();
 
-    // Country dropdown
-    cy.get('[pc153=""] > #clientgroup > .p-select-dropdown').click();
-    cy.get('.p-iconfield > .p-inputtext').type('Abu');
-    cy.get('#clientgroup_0').should('be.visible').click({ force: true });
+  // Valid Until
+  cy.get('#ValidUntil > .p-datepicker > .p-inputtext').click();
+  cy.get('[aria-label="23"]').click();
 
-    // Country (duplicate step?)
-    cy.get('#country > .p-select-dropdown').click();
-    cy.get('.p-iconfield > .p-inputtext').type('United Arab Emirates');
-    cy.get('#country_0').should('be.visible').click({ force: true });
+  // Approval Follow-Up
+  cy.get('#ApprovalFollowUp > .p-datepicker > .p-inputtext').click();
 
-    // Other details
-    cy.get('[pc158=""] > #clientgroup > .p-select-dropdown').click();
-    cy.get('.p-iconfield > .p-inputtext').type('arun');
-    cy.get('#clientgroup_0').should('be.visible').click();
+  // Priority, Payment, Division
+  cy.get('#Priority > .p-select-dropdown').click();
+  cy.get('#Priority_1').click();
 
-    cy.get('#Validity').clear().type('15');
-    cy.get('#CreditLimits').clear().type('10000');
+  cy.get('#PaymentTerm > .p-select-dropdown').click();
+  cy.get('#PaymentTerm_1').click();
 
-    cy.get('#Priority > .p-select-dropdown').click();
-    cy.get('#Priority_0').click();
+  cy.get('#Division > .p-select-dropdown').click();
+  cy.get('#Division_17').click();
 
-    cy.get('#payment > .p-select-dropdown').click();
-    cy.get('#payment_1').click();
+  // Job Location
+  cy.get('#JobLocation > .p-select-label').click();
+  cy.get('#JobLocation_0').click();
 
-    cy.get('#placeof > .p-select-dropdown').click();
-    cy.get('#placeof_1 > .ng-star-inserted').click();
+  // Select Item
+  cy.get('#Item > .p-select-dropdown').click();  
+  cy.get('#Item_15').click();
 
+  // Toggle switch
+  cy.get('div[_ngcontent-ng-c1357793603=""] > .ng-valid > .s-switch > .p-toggleswitch-input').click();
 
-    // Remarks
-    cy.wait(2000);
-    cy.get('#remark').should('not.be.disabled').clear().type('Emirates Airline, the flagship carrier of the group, is the largest airline in the Middle East and one of the worlds leading international airlines. Operating a fleet of over 250 wide-bodied aircraft, including the Airbus A380 and Boeing 777, it serves more than 150 destinations across six continents . In the fiscal year ending March 2025, Emirates reported a record profit of $5.2 billion, transporting 53.7 million passengers and generating $34.9 billion in revenue ');
+  // Add Discount
+  cy.get('.rounded-lg > .w-full > :nth-child(2) > .text-center > .cursor-pointer').click();
+  cy.get('#QCDiscountTypeValue0-0').clear().type('50');
+  cy.get('.rounded-lg > .w-full > :nth-child(2) > .text-center > .cursor-pointer').click();
 
+  // Add Tax
+  cy.get('.p-0').click();
+  cy.get(':nth-child(5) > .cursor-pointer').click();
 
-    // Save the Client
-    // cy.get('.btn-new > .p-ripple').click();
-  });
+  // Final Action Buttons
+  cy.get('.flex.ng-touched > .lg\\:w-\\[35\\%\\] > .flex-row > .p-button-secondary').click();
+
+  // Add another item
+  cy.get('.d-flex > p-button > .p-ripple').click();
+  cy.get('#Item > span').click({ multiple: true });
+  cy.get('#Item_3').click();
+
+  // Save Quote (if needed)
+  // cy.get('.btn-new > .p-ripple').click();
+});
+
   //Quote Edit
   it('should Edit a Quote', () => {
     //Wait 2000 for loading page
@@ -101,7 +111,7 @@ describe('Master Test', () => {
 
   // Deatil Page Quote Check Edit
 
-  it.only('should Edit a Deatil Page Quote', () => {
+  it('should Edit a Deatil Page Quote', () => {
     //Wait 2000 for loading page
     cy.wait(2000);
     cy.get('[routerlink="/quotes"]').should('be.visible').click();

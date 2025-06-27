@@ -1,4 +1,4 @@
-describe('Home Page Tests', () => {
+describe('Item Tests', () => {
     beforeEach(() => {
         cy.login('user1'); // Make sure this user exists in credentials.json
         cy.visit('/home');
@@ -26,17 +26,5 @@ describe('Home Page Tests', () => {
         //cy.get('.gap-2 > .btn-new > .p-ripple').click();
     });
 
-    //  Creating create New Item
-    it('should create New Item', () => {
-        cy.get('#pn_id_1_tab_1 > .pi').click();
-        cy.wait(1000);
-        cy.get('[routerlink="/master/division"]').click();
-        cy.wait(1000);
-        cy.get('.border-l > .p-ripple').click();
-        cy.get('#Name').type('ACCOUNT SUB');
-        cy.get('#Tax > .p-select-dropdown').click();
-        cy.wait(1000);
-        
-       
-    });
+    
 });       

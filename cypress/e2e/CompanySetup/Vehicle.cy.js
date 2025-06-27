@@ -1,4 +1,4 @@
-describe('CompanySetup Test', () => {
+describe('Vehicle Test', () => {
     beforeEach(() => {
         cy.login('user1'); // Make sure this user exists in credentials.json
         cy.visit('/home');

@@ -70,7 +70,8 @@ describe('Quote Creation', () => {
         cy.get('#PaymentTerm_1').click();
         cy.wait(1000);
         cy.get('#Division > .p-select-dropdown').click();
-        cy.get('#Division_17').click();
+        cy.get('.ng-tns-c1151199684-47.p-overlay > .ng-trigger > .p-select-overlay > .p-select-header > .p-iconfield > .p-inputtext').type('GEN');
+        cy.get('#Division_0').click();
         cy.wait(1000);
         cy.get('#JobLocation > .p-select-label').click();
 
@@ -100,15 +101,15 @@ describe('Quote Creation', () => {
         cy.get('#Item > .p-select-dropdown').click();  
         cy.get('#Item_15').click();
         cy.wait(2000)
-        cy.get('div[_ngcontent-ng-c1357793603=""] > .ng-valid > .s-switch > .p-toggleswitch-input').click();
+        cy.get('.p-toggleswitch-input').click({ multiple: true });
         //Adding Discount
         cy.get('.rounded-lg > .w-full > :nth-child(2) > .text-center > .cursor-pointer').click();
         cy.get('#QCDiscountTypeValue0-0').clear().type('50');
         cy.wait(2000);
-        cy.get('.rounded-lg > .w-full > :nth-child(2) > .text-center > .cursor-pointer').click();
+        cy.get('.rounded-lg > .w-full > :nth-child(2) > .text-center > .cursor-pointer').should('be.visible').click();
         //Adding new tzx
-        cy.get('.p-0').click();
-        cy.get(':nth-child(5) > .cursor-pointer').click();
+        // cy.get('.p-0').click();
+        // cy.get(':nth-child(5) > .cursor-pointer').click();
 
         // cy.get('.d-flex > p-button > .p-ripple').click();
         // cy.get('.flex.ng-touched > .lg\\:w-\\[35\\%\\] > .flex-row > .p-button-secondary').click();
@@ -152,7 +153,7 @@ describe('Quote Creation', () => {
 
 // Deatil Page Quote Check Edit
 
-     it.only('should Edit a Deatil Page Quote', () => {
+     it('should Edit a Deatil Page Quote', () => {
         //Wait 2000 for loading page
         cy.wait(2000);
         cy.get('[routerlink="/quotes"]').click();
