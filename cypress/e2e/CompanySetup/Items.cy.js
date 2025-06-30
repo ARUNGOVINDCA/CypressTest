@@ -23,8 +23,32 @@ describe('Item Tests', () => {
         cy.get('#Tax_1').click();
         cy.get('#Description').type('The Work is For Annual Maintenance of Computers Only.');
         cy.get('#Remark').type('AMC only');
+
+        //To save 
         //cy.get('.gap-2 > .btn-new > .p-ripple').click();
     });
+    it('should Edit a Item', () => {
+        cy.get('#pn_id_1_tab_1 > .pi').click();
+        cy.wait(1000);
+        cy.get('[routerlink="/master/items"]').click();
+        cy.wait(1000);
+        cy.get(':nth-child(2) > .list-element > .text-right > .ml-2').should('be.visible').click();
+        //Change  the Amount
+        cy.wait(2000);
+        cy.get('#Price').should('be.visible').clear().type('2000', { multiple: true });
+        cy.get('.gap-2 > .btn-new > .p-ripple').click()
+    });
+    it('should Inactive a  Item', () => {
+        cy.get('#pn_id_1_tab_1 > .pi').click();
+        cy.wait(1000);
+        cy.get('[routerlink="/master/items"]').click();
+        cy.get(':nth-child(15) > .list-element > .flex').should('be.visible').click();
+        cy.get('[ng-reflect-model="false"] > .p-ripple').should('be.visible').click();
+        cy.get('.p-confirmpopup-accept-button > .p-ripple').should('be.visible').click();
+        
+        
 
-    
+    });
+
+
 });       

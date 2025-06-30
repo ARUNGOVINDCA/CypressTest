@@ -22,7 +22,7 @@ describe('Tax Tests', () => {
      //Creating create New Group TaX
         it('should Create New Group Tax', () => {
             cy.get('#pn_id_1_tab_1 > .pi').click();
-            cy.wait(3000);
+            cy.wait(2000);
             cy.get('[routerlink="/master/taxes"]').click();
             cy.get('.p-splitbutton-dropdown').click();
             cy.get('.p-tieredmenu-item-content > .p-ripple').click();
@@ -31,7 +31,7 @@ describe('Tax Tests', () => {
             cy.get('.p-multiselect-label-container').click();
             // cy.get('.p-iconfield > .p-inputtext').type('gst');
             cy.get('#TaxRates_4',).click();
-            cy.wait(4000);
+            cy.wait(2000);
             cy.get('#TaxRates_2',).click();
 
             // cy.get('.p-iconfield > .p-inputtext').type('gst');
@@ -61,14 +61,14 @@ describe('Tax Tests', () => {
 
     });
     //Deleting TaX
-    it('should Delete the Tax', () => {
+    it.only('should Delete the Tax', () => {
         cy.get('#pn_id_1_tab_1 > .pi').click();
         cy.wait(1000);
-        cy.get('[routerlink="/master/taxes"]').click();
-        cy.get('.list-wrapper > :nth-child(2)').click();
-        cy.get('.btn > .p-button-icon').click();
+        cy.get('[routerlink="/master/taxes"]').should('be.visible').click();
+        cy.get('.list-wrapper > :nth-child(2)').should('be.visible').click();
+        cy.get('.btn > .p-button-icon').should('be.visible').click();
         cy.wait(2000);
-        cy.get(':nth-child(1) > p-button.ng-star-inserted > .p-ripple').click();
+        cy.get(':nth-child(1) > p-button.ng-star-inserted > .p-ripple').should('be.visible').click();
     //  cy.get('.p-confirmpopup-accept-button > .p-ripple').click();                        //Automate time Remove this other wise delete could be Tax will be deleted
     });
 });
