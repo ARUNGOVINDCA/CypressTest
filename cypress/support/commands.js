@@ -43,5 +43,22 @@ Cypress.Commands.add('login', (user) => {
     });
   });
 });
+Cypress.Commands.add('createZone', (zoneName, taxOption, remarks) => {
+  cy.get('#pn_id_1_tab_1 > .pi').click(); // Master tab
+  cy.wait(1000);
+  cy.get('[routerlink="/master/zone"]').click(); // Zone link
+
+  cy.get('.ms-2 > .p-ripple').should('be.visible').click(); // New Zone button
+  cy.get('#Name').type(zoneName);
+
+  cy.get('#Tax > .p-select-dropdown').should('be.visible').click();
+  cy.get(`#Tax_${taxOption}`).should('be.visible').click(); // e.g., 2 = "#Tax_2"
+
+  cy.get('.p-textarea').should('not.be.disabled').type(remarks);
+
+  // Optional: Uncomment to save
+  // cy.get('.gap-2 > .btn-new > .p-ripple').should('be.visible').click();
+});
+
 
 
