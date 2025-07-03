@@ -86,7 +86,7 @@ describe('Property Management Tests', () => {
 
     cy.get('.p-select-label')
       .should('be.visible')
-      .first() // Fix: avoid multiple match error
+      .first() 
       .click();
     cy.wait(1000);
     cy.get('#pn_id_16_0')
