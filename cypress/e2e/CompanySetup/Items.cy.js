@@ -10,7 +10,10 @@ describe('Item Tests', () => {
         cy.wait(1000);
         cy.get('[routerlink="/master/items"]').click();
         cy.wait(1000);
-        cy.get('.border-l > .p-ripple').click();
+        cy.get('.ms-1 > .p-ripple')
+              .should('be.visible')
+            .click();
+
         cy.get('#Item').type('A M C Computer');              //Adding Item Name
         cy.get('#ItemCategory > .p-select-dropdown').click();  //drop Down
         cy.wait(1000);
@@ -43,24 +46,38 @@ describe('Item Tests', () => {
             .type('2000', { multiple: true });
         cy.get('.gap-2 > .btn-new > .p-ripple').click()
     });
-    it('should Inactive a  Item', () => {
-        cy.get('#pn_id_1_tab_1 > .pi').click();
-        cy.wait(1000);
-        cy.get('[routerlink="/master/items"]').click();
-        cy.get(':nth-child(15) > .list-element > .flex')
-            .should('be.visible')
-            .click();
-        cy.get('[ng-reflect-model="false"] > .p-ripple')
-            .should('be.visible')
-            .click();
-        cy.get('.p-confirmpopup-accept-button > .p-ripple')
-            .should('be.visible')
-            .click();
+ it('should inactivate an item', () => {
+  // Navigate to Master tab
+  cy.get('#pn_id_1_tab_1 > .pi')
+    .scrollIntoView()
+    .should('be.visible')
+    .click();
 
+  // Navigate to Items page
+  cy.get('[routerlink="/master/items"]')
+    .scrollIntoView()
+    .should('be.visible')
+    .click();
 
+  // Click on the 15th item in the list
+  cy.get(':nth-child(17) > .list-element')
+    .scrollIntoView()
+    .should('be.visible')
+    .click();
 
+  // Click the Inactivate toggle or button
+  cy.get('[ng-reflect-model="false"] > .p-ripple')
+    .scrollIntoView()
+    .should('be.visible')
+    .click();
 
-    });
+  // Confirm the inactivation in the popup
+  cy.get('.p-confirmpopup-accept-button > .p-ripple')
+    .scrollIntoView()
+    .should('be.visible')
+    .click();
+});
+
 
 
 });       
