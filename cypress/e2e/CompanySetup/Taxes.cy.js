@@ -61,7 +61,7 @@ describe('Tax Tests', () => {
 
     });
     //Deleting TaX
-    it.only('should Delete the Tax', () => {
+    it('should Delete the Tax', () => {
         cy.get('#pn_id_1_tab_1 > .pi').click();
         cy.wait(1000);
         cy.get('[routerlink="/master/taxes"]').should('be.visible').click();

@@ -61,7 +61,7 @@ describe('Property Management Tests', () => {
     //  Save button here
     // cy.get('.gap-2 > .btn-new > .p-ripple').click();
   });
-  it.only('should Activate inactive Property', () => {
+  it('should Activate inactive Property', () => {
     cy.get('#pn_id_1_tab_1 > .pi')
       .scrollIntoView()
       .should('be.visible')

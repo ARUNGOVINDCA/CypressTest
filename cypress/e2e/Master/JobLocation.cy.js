@@ -8,16 +8,17 @@ describe('Master Test', () => {
     cy.get('#pn_id_1_tab_1 > .pi').click();
     cy.wait(2000);
     cy.get('[routerlink="/master/joblocation"]').click();
-    cy.get('.border-l > .p-ripple > .p-button-label').click();
+    cy.get('.btn-new > .p-ripple').click();
     cy.get('#ItemCategory > .p-select-dropdown').click();
     cy.wait(2000);
     // cy.get('.p-select-list-container').scrollTo('bottom', { duration: 3000 });
-        // Step 2: Wait for the dropdown panel to appear
-    cy.get('.p-select-list-container', { timeout: 2000 }).should('be.visible');
+    // Step 2: Wait for the dropdown panel to appear
+    cy.get('.p-select-list-container', { timeout: 2000 })
+      .should('be.visible');
 
     // Step 3: Scroll to the desired item and click it
     cy.get('.p-select-list-container')
-      .contains('KD COMPANY') 
+      .contains('KD COMPANY')
       .scrollIntoView()
       .should('be.visible')
       .click();
@@ -29,7 +30,11 @@ describe('Master Test', () => {
     cy.get('#zones_0').click();
     cy.get('#clientgroup > .p-select-dropdown').type('Ras');
     cy.get('#clientgroup_0').click();
+    //When save button
+    // cy.get('.gap-2 > .btn-new > .p-ripple')
+    // .should('be.visible')
+    // .click();
 
 
   });
-   });
+});
