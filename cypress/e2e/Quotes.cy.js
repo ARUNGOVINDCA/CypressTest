@@ -136,7 +136,7 @@ describe('Quote Creation', () => {
         cy.wait(2000);
         cy.get('[routerlink="/quotes"]').click();
         cy.wait(5000);
-        cy.get(':nth-child(7) > .items-start > .w-1\\/6 > .ml-2').click();
+        cy.get(':nth-child(2) > .items-start > .w-1\\/6 > .ml-2').click();
         //Change to Recurring
         cy.get('[ng-reflect-model="false"] > .p-ripple')
             .scrollIntoView()

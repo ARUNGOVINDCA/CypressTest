@@ -11,7 +11,7 @@ describe('Settings Quote Catagories', () => {
             cy.get(':nth-child(2) > .space-y-1 > li').click();
             cy.wait(1000);
             cy.get('.p-2 > .pi').click();
-            cy.get('.border-l > .p-ripple').click();
+            cy.get('.btn-new > .p-ripple').click();
             cy.wait(1000);
             cy.get('#Name').type('Quote CateGe');
             cy.get('#NameCategory > .p-select-dropdown').click();

@@ -90,14 +90,20 @@ describe('Master Test', () => {
   // });
 
 
-    it('should create a Client', () => {
+  it('should create a Client', () => {
 
     // Navigate to client section
-    cy.get('#pn_id_1_tab_1 > .pi').should('be.visible').click();
-    cy.get('[routerlink="/master/client"]').should('be.visible').click();
+    cy.get('#pn_id_1_tab_1 > .pi')
+      .should('be.visible')
+      .click();
+    cy.get('[routerlink="/master/client"]')
+      .should('be.visible')
+      .click();
 
     // Click "New" to create a client
-    cy.get('.btn-new > .p-ripple', { timeout: 3000 }).should('be.visible').click();
+    cy.get('.btn-new > .p-ripple', { timeout: 3000 })
+      .should('be.visible')
+      .click();
 
     // Fill in client info
     cy.get('#title').type('Cor', { delay: 100 });
@@ -106,8 +112,12 @@ describe('Master Test', () => {
     cy.get('#CustomerCode').type('007', { delay: 100 });
 
     // Select client group from dropdown
-    cy.get('[pc132=""] > #clientgroup > .p-select-dropdown').should('be.visible').click();
-    cy.get('#clientgroup_1 > .ng-star-inserted').should('be.visible').click({ delay: 100 });
+    cy.get('[pc132=""] > #clientgroup > .p-select-dropdown')
+      .should('be.visible')
+      .click();
+    cy.get('#clientgroup_1 > .ng-star-inserted')
+      .should('be.visible')
+      .click({ delay: 100 });
     cy.wait(1000);
 
 
@@ -131,20 +141,30 @@ describe('Master Test', () => {
     // Country dropdown
     cy.get('[pc153=""] > #clientgroup > .p-select-dropdown').click();
     cy.get('.p-iconfield > .p-inputtext').type('Abu');
-    cy.get('#clientgroup_0').should('be.visible').click({ force: true });
+    cy.get('#clientgroup_0')
+      .should('be.visible')
+      .click({ force: true });
 
     // Country (duplicate step?)
     cy.get('#country > .p-select-dropdown').click();
     cy.get('.p-iconfield > .p-inputtext').type('United Arab Emirates');
-    cy.get('#country_0').should('be.visible').click({ force: true });
+    cy.get('#country_0')
+      .should('be.visible')
+      .click({ force: true });
 
     // Other details
     cy.get('[pc158=""] > #clientgroup > .p-select-dropdown').click();
     cy.get('.p-iconfield > .p-inputtext').type('arun');
-    cy.get('#clientgroup_0').should('be.visible').click();
+    cy.get('#clientgroup_0')
+      .should('be.visible')
+      .click();
 
-    cy.get('#Validity').clear().type('15');
-    cy.get('#CreditLimits').clear().type('10000');
+    cy.get('#Validity')
+      .clear()
+      .type('15');
+    cy.get('#CreditLimits')
+      .clear()
+      .type('10000');
 
     cy.get('#Priority > .p-select-dropdown').click();
     cy.get('#Priority_0').click();
@@ -158,7 +178,9 @@ describe('Master Test', () => {
 
     // Remarks
     cy.wait(2000);
-    cy.get('#remark').should('not.be.disabled').clear().type('Emirates Airline, the flagship carrier of the group, is the largest airline in the Middle East and one of the worlds leading international airlines. Operating a fleet of over 250 wide-bodied aircraft, including the Airbus A380 and Boeing 777, it serves more than 150 destinations across six continents . In the fiscal year ending March 2025, Emirates reported a record profit of $5.2 billion, transporting 53.7 million passengers and generating $34.9 billion in revenue ');
+    cy.get('#remark').should('not.be.disabled')
+      .clear()
+      .type('Emirates Airline, the flagship carrier of the group, is the largest airline in the Middle East and one of the worlds leading international airlines. Operating a fleet of over 250 wide-bodied aircraft, including the Airbus A380 and Boeing 777, it serves more than 150 destinations across six continents . In the fiscal year ending March 2025, Emirates reported a record profit of $5.2 billion, transporting 53.7 million passengers and generating $34.9 billion in revenue ');
 
 
     // Save the Client
@@ -172,23 +194,43 @@ describe('Master Test', () => {
     cy.wait(3000);
     cy.get(':nth-child(4) > .items-start > .w-1\\/6 > .ml-2').click();
     cy.wait(1000);
-    cy.get('#title').clear().type('Spl');                                     //Added clear() for repeat Automation the values add lot 
-    cy.get('#phone').clear().type('9877866225');
+    cy.get('#title')
+      .clear()
+      .type('Spl');                                     //Added clear() for repeat Automation the values add lot 
+    cy.get('#phone')
+      .clear()
+      .type('9877866225');
     cy.get('.btn-new > .p-ripple').click();
   });
 
 
   it('should verify client detail page filters work correctly', () => {
 
-    cy.get('#pn_id_1_tab_1 > .pi', { timeout: 5000 }).should('be.visible').click();
-    cy.get('[routerlink="/master/client"]').should('be.visible').click();
-    cy.get(':nth-child(11) > .items-start > .w-5\\/6 > .text-sm').should('be.visible').click();
-    cy.get('#pn_id_37_tab_JobLocation').should('be.visible').click();
-    cy.get('#input-first-name').should('be.visible').type('Al');
-    cy.get('.absolute').should('be.visible').click();
-    cy.get('.filter-On > .p-ripple').should('be.visible').click();
-    cy.get('.p-button-warn').should('be.visible').click();
-    
+    cy.get('#pn_id_1_tab_1 > .pi', { timeout: 5000 })
+      .should('be.visible')
+      .click();
+    cy.get('[routerlink="/master/client"]')
+      .should('be.visible')
+      .click();
+    cy.get(':nth-child(11) > .items-start > .w-5\\/6 > .text-sm')
+      .should('be.visible')
+      .click();
+    cy.get('#pn_id_37_tab_JobLocation')
+      .should('be.visible')
+      .click();
+    cy.get('#input-first-name')
+      .should('be.visible')
+      .type('Al');
+    cy.get('.absolute')
+      .should('be.visible')
+      .click();
+    cy.get('.filter-On > .p-ripple')
+      .should('be.visible')
+      .click();
+    cy.get('.p-button-warn')
+      .should('be.visible')
+      .click();
+
   });
 
 
