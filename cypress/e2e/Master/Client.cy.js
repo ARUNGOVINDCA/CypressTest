@@ -178,7 +178,8 @@ describe('Master Test', () => {
 
     // Remarks
     cy.wait(2000);
-    cy.get('#remark').should('not.be.disabled')
+    cy.get('#remark')
+      .should('not.be.disabled')
       .clear()
       .type('Emirates Airline, the flagship carrier of the group, is the largest airline in the Middle East and one of the worlds leading international airlines. Operating a fleet of over 250 wide-bodied aircraft, including the Airbus A380 and Boeing 777, it serves more than 150 destinations across six continents . In the fiscal year ending March 2025, Emirates reported a record profit of $5.2 billion, transporting 53.7 million passengers and generating $34.9 billion in revenue ');
 
